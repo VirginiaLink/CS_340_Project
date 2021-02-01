@@ -26,24 +26,53 @@
     <main class="big-container">
 
 
-      <article class="container">
-        <h2>Add Employee</h2>
-        <p>Do stuff...</p>
+      <article class="container" id="container">
+				<h2>Add Employee</h2>
+        <form>
+        	<label="fname">First name: </label>
+					<input type="text" id="fname" name="fname"><br>
+					<label="fname">Last name: </label>
+					<input type="text" id="lname" name="lname"><br>
+					<label="fname">Phone Number: </label>
+					<input type="text" id="phone" name="phone"><br>
+					<label="fname">Payment Method: </label>
+					<input type="text" id="paymentInfo" name="paymentInfo"><br>
+					<label="fname">Hours Worked: </label>
+					<input type="text" id="hoursWorked" name="hoursWorked"><br>
+        </form>
+				<button type="button" id="button">Add</button>
       </article>
 
-      <article class="container">
+      <article class="container" id="container">
         <h2>Delete Employee</h2>
-        <p>Do stuff...</p>
+				<input type="text" placeholder="Search by Employee id"><br>
+				<button type="button" id="button">Delete</button>
       </article>
 
-      <article class="container">
+      <article class="container" id="container">
         <h2>Edit Employee</h2>
-        <p>Do stuff...</p>
+				<input type="text" placeholder="Search by Employee id">
+				<h4>Edit Information</h4>
+				<form>
+					<label="fname">First name: </label>
+					<input type="text" id="fname" name="fname"><br>
+					<label="fname">Last name: </label>
+					<input type="text" id="lname" name="lname"><br>
+					<label="fname">Phone Number: </label>
+					<input type="text" id="phone" name="phone"><br>
+					<label="fname">Payment Method: </label>
+					<input type="text" id="paymentInfo" name="paymentInfo"><br>
+					<label="fname">Hours Worked: </label>
+					<input type="text" id="hoursWorked" name="hoursWorked"><br>
+				</form>
+				<button type="button" id="button">Save Changes</button>
       </article>
 
-      <article class="container">
-        <h2>Search Employees</h2>
-        <p>Do stuff...</p>
+      <article class="container" id="container">
+        <h2>Display Employees</h2>
+        <input type="text" placeholder="Filter by Employee id">
+				<input type="text" placeholder="Filter by first name">
+				<input type="text" placeholder="Filter by last name">
       </article>
 
     </main>
