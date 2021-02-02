@@ -1,19 +1,38 @@
 /* Practice css file */
 
+html {background-color: #fff;}
+
 .site-title{
-  background-color: #815e8f;
+  background-color: #856B8B;
   color: white;
-  font-family: Helvetica;
+  font-family: Trebuchet MS;
   font-weight: 400;
   font-size: 30px
   margin: 0px;
   padding: 10px 20px;
+  text-decoration: none;
+
+}
+
+.header {
+  background-color: #856B8B;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: grey;
 }
 
 #top-navbar {
   background-color: #fff;
   font-size: 18px;
   line-height: 22px;
+  margin-left: 0;
 }
 
 #top-navbar-list {
@@ -21,13 +40,13 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #fff;
+  background-color: #6C5173;
 }
 
 #top-navbar-item {
   float: left;
   display: block;
-  font-family: Helvetica;
+  font-family: Trebuchet MS;
   text-align: center;
   text-decoration: none;
   padding: 14px;
@@ -37,23 +56,43 @@
   background-color: #fff;
   border: 1px solid #dadada;
   border-radius: 1px;
-  font-family: Helvetica;
+  font-family: Trebuchet MS;
   font-weight: 100;
   font-size: 14px;
   padding: 10px 20px;
   margin: 5px 5px;
+  border-radius: 10px;
 
 }
 #button {
-  border: none;
   color: white;
-  background-color: #b99dc4;
+  background-color: #6C5173;
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
-  transition-duration: 0.4s;
   cursor: pointer;
+  border: solid black;
+  border-width: 1px;
+  border-radius: 5px;
+}
+
+#display-table {
+  border: 1px solid black;
+  margin-top: 10px;
+
+}
+
+#display-table-row, #display-table-item {
+  border: 1px solid black;
+}
+
+#entry-box {
+  margin: 5px;
+}
+
+#form-label {
+  padding: 5px;
 }
