@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>75 Bugs Detected</title>
+
+    <link rel="stylesheet" href="style.css" media="screen">
+</head>
+
+<body>
+    <header class="header">
+        <a href="index.html">
+            <h1 class="site-title">75 Bugs Detected</h1>
+        </a>
+
+        <nav class="navbar" id="top-navbar">
+            <ul class="navlist" id="top-navbar-list">
+                <li class="navitem navlink" id="top-navbar-item"><a href="employees.html">Employees</a></li>
+                <li class="navitem navlink" id="top-navbar-item"><a href="customer.html">Customers</a></li>
+                <li class="navitem navlink" id="top-navbar-item"><a href="payments.html">Payments</a></li>
+                <li class="navitem navlink" id="top-navbar-item"><a href="services.html">Services</a></li>
+                <li class="navitem navlink" id="top-navbar-item"><a href="gear.html">Gear</a></li>
+                <li class="navitem navlink" id="top-navbar-item"><a href="certs.html">Certifications</a></li>
+                <li class="navitem navlink" id="top-navbar-item"><a href="assignments.html">Assignments</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <main class="big-container">
+
+
+        <article class="container" id="container">
+            <h2>Add Certification</h2>
+            <form>
+                <label="certID" id="form-label">Certification ID (1 or more): </label>
+                    <input type="text" id="entry-box" name="certID"><br>
+                <label="employeeID" id="form-label">Employee ID (1 or more): </label>
+                    <input type="text" id="entry-box" name="employeeID"><br>
+            </form>
+            <button type="button" id="button">Add</button>
+        </article>
+
+        <!-- Not to punish employees, maybe their cert just expired...-->
+        <article class="container" id="container">
+            <h2>Remove Certification</h2>
+            <form>
+                <label="certID" id="form-label">Certification ID (1 or more): </label>
+                    <input type="text" id="entry-box" name="certID"><br>
+                    <label="employeeID" id="form-label">Employee ID (1 or more): </label>
+                        <input type="text" id="entry-box" name="employeeID"><br>
+            </form>
+            <button type="button" id="button">Remove</button>
+        </article>
+
+        <article class="container" id="container">
+            <h2>Certifications</h2>
+            <input type="text" placeholder="Filter by Certification ID">
+            <button type="button" id="search-button">Search</button>
+            <input type="text" placeholder="Filter by Employee ID">
+            <button type="button" id="search-button">Search</button>
+
+            <table style="width:100%" id="display-table">
+                <tr id="display-table-row">
+                    <th id="display-table-item">Employee ID</th>
+                    <th id="display-table-item">Certification ID</th>
+                    <th id="display-table-item">Certification Name</th>
+                </tr>
+            </table>
+
+        </article>
+
+    </main>
+
+
+</body>
+
+</html>
