@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>75 Bugs Detected</title>
+
+    <link rel="stylesheet" href="style.css" media="screen">
+</head>
+
+<body>
+    <header class="header">
+        <a href="/home">
+            <h1 class="site-title">75 Bugs Detected</h1>
+        </a>
+
+        <nav class="navbar" id="top-navbar">
+            <ul class="navlist" id="top-navbar-list">
+                <li class="navitem navlink" id="top-navbar-item"><a href="/employees">Employees</a></li>
+                <li class="navitem navlink" id="top-navbar-item"><a href="/customers">Customers</a></li>
+                <li class="navitem navlink" id="top-navbar-item"><a href="/payments">Payments</a></li>
+                <li class="navitem navlink" id="top-navbar-item"><a href="/services">Services</a></li>
+                <li class="navitem navlink" id="top-navbar-item"><a href="/gear">Gear</a></li>
+                <li class="navitem navlink" id="top-navbar-item"><a href="/certs">Certifications</a></li>
+                <li class="navitem navlink" id="top-navbar-item"><a href="/assignments">Assignments</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="big-container">
+
+
+        <article class="container" id="container">
+            <h2>New Assignment</h2>
+            <form>
+                <label="employeeID" id="form-label">Employee ID (1 or more): </label>
+                    <input type="text" id="entry-box" name="emplyoyeeID"><br>
+                    <label="customerID" id="form-label">Customer ID (1 or more): </label>
+                        <input type="text" id="entry-box" name="customerID"><br>
+            </form>
+            <button type="button" id="button">Add</button>
+        </article>
+
+        <article class="container" id="container">
+            <h2>Modify Assignment</h2>
+            <form>
+                <label="employeeID" id="form-label">Employee ID (1 or more): </label>
+                    <input type="text" id="entry-box" name="employeeID"><br>
+                    <label="certID" id="form-label">Customer ID (1 or more): </label>
+                        <input type="text" id="entry-box" name="certID"><br>
+            </form>
+            <button type="button" id="button">Remove Employee from Assignment</button>
+            <button type="button" id="button">Cancel Assignment</button>
+        </article>
+
+        <article class="container" id="container">
+            <h2>Active Assignments</h2>
+            <input type="text" placeholder="Filter by Customer ID">
+            <button type="button" id="search-button">Search</button>
+            <input type="text" placeholder="Filter by Employee ID">
+            <button type="button" id="search-button">Search</button>
+
+            <table style="width:100%" id="display-table">
+                <tr id="display-table-row">
+                    <th id="display-table-item">Employee ID</th>
+                    <th id="display-table-item">Customer ID</th>
+                    <th id="display-table-item">Appointment Date/Time</th>
+                </tr>
+            </table>
+
+        </article>
+
+    </main>
+
+
+</body>
+
+</html>

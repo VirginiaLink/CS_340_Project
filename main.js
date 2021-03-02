@@ -18,11 +18,65 @@ app.use('/static', express.static('public'));
 app.set('view engine', 'handlebars');
 app.set('port', process.argv[2]);
 app.set('mysql', mysql);
-app.use('/people_certs', require('./people_certs.js'));
-app.use('/people', require('./people.js'));
-app.use('/planets', require('./planets.js'));
-app.use('/', express.static('public'));
 
+app.use('/employees', require('./employees.js'))
+// app.use('/customers', require('./customers.js'))
+// app.use('/payments', require('./payments.js'))
+// app.use('/services', require('./services.js'))
+// app.use('/gear', require('./gear.js'))
+// app.use('/certs', require('./certs.js'))
+// app.use('/assignments', require('./assignments.js'))
+
+app.use('/', express.static('public'));
+//-----------------------------------------------------------
+//ROUT COLLECTION
+//HOME
+app.get("/", function (req, res) {
+    res.render('home');
+});
+
+// HOME
+app.get("/home", function (req, res) {
+    res.render('home');
+});
+
+// EMPLOYEES
+app.get("/employees", function (req, res) {
+    res.render('employees');
+});
+
+// CUSTOMERS
+app.get("/customers", function (req, res) {
+    res.render('customers');
+});
+
+// PAYMENTS
+app.get("/payments", function (req, res) {
+    res.render('payments');
+});
+
+// SERVICES
+app.get("/services", function (req, res) {
+    res.render('services');
+});
+
+// GEAR
+app.get("/gear", function (req, res) {
+    res.render('gear');
+});
+
+// CERTS
+app.get("/certs", function (req, res) {
+    res.render('certs');
+});
+
+// ASSIGNMENTS
+app.get("/assignments", function (req, res) {
+    res.render('assignments');
+});
+
+
+//-----------------------------------------------------------
 app.use(function(req,res){
   res.status(404);
   res.render('404');
