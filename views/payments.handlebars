@@ -32,19 +32,72 @@
 
         <article class="container" id="container">
             <h2>Add Payment</h2>
-            <form>
-                <label="customerID" id="form-label">Customer ID: </label>
-                    <input type="text" id="entry-box" name="customerID"><br>
-                    <label="date" id="form-label">Date: </label>
-                        <input type="text" id="entry-box" name="date"><br>
-                        <label="amount" id="form-label">Amount: </label>
-                            <input type="text" id="entry-box" name="amount"><br>
+            <form id="addpayment" action="/payments" method="post">
+                Customer ID: <input type="text" name="customerID"><br>
+                Date: <input type="text" name="date"><br>
+                Amount: <input type="text" name="amount"><br>
+                <input type="submit" value="Submit">
             </form>
             <button type="button" id="button">Add</button>
         </article>
 
-
         <article class="container" id="container">
+            <h2>Mark Payment as Complete</h2>
+            <input type="text" id="entry-box" placeholder="Search by Customer ID">
+            <button type="button" id="search-button">Search</button><br>
+            <button type="button" id="button">Delete</button>
+        </article>
+
+        
+        <article class="container" id="container">
+            <h2>Payments</h2>
+            <input type="text" placeholder="Filter by Employee id">
+            <button type="button" id="search-button">Search</button>
+            <input type="text" placeholder="Filter by first name">
+            <button type="button" id="search-button">Search</button>
+            <input type="text" placeholder="Filter by last name">
+            <button type="button" id="search-button">Search</button><br>
+        
+            <table style="width:100%" id="display-table">
+                <thead>
+                    <th>Customer ID</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                </thead>
+                <tbody>
+                    {{#each payments}}
+                    <tr>
+                        <td>{{customerID}}</td>
+                        <td>{{date}}</td>
+                        <td>{{amount}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+        
+                <!-- <tr id="display-table-row">
+                            <th id="display-table-item">ID Number</th>
+                            <th id="display-table-item">First Name</th>
+                            <th id="display-table-item">Last Name</th>
+                            <th id="display-table-item">Phone Number</th>
+                            <th id="display-table-item">Payment Method</th>
+                            <th id="display-table-item">Hours Worked</th>
+                        </tr>
+                        <tr id="display-table-row">
+                            <td id="display-table-item">1</td>
+                            <td id="display-table-item">John</td>
+                            <td id="display-table-item">Smith</td>
+                            <td id="display-table-item">503-555-5555</td>
+                            <td id="display-table-item">DD</td>
+                            <td id="display-table-item">100</td>
+                        </tr> -->
+            </table>
+        
+    </article>  
+
+        
+
+
+        {{!-- <article class="container" id="container">
             <h2>Payments</h2>
             <input type="text" placeholder="Filter by customer ID">
             <button type="button" id="search-button">Search</button>
@@ -64,7 +117,7 @@
                 </tr>
             </table>
 
-        </article>
+        </article> --}}
 
     </main>
 
