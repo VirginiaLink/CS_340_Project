@@ -3,7 +3,7 @@ module.exports = function(){
     var router = express.Router();
 
     function getEmployees(res, mysql, context, complete) {
-      mysql.pool.query("SELECT firstName, lastName FROM employees", function(error, results, fields) {
+      mysql.pool.query("SELECT employeeID, firstName, lastName, phone, paymentInfo, hoursWorked FROM employees", function(error, results, fields) {
         if(error) {
           res.write(JSON.stringify(error));
           res.end();
@@ -15,7 +15,7 @@ module.exports = function(){
 
 // -------------------------------------------------
 
-
+// Displays all employees in table
     router.get('/', function(req, res) {
       console.log("in the get")
       var callbackCount = 0;
@@ -32,6 +32,21 @@ module.exports = function(){
     });
 
 
+    router.post('/', function(req, res){
+      console.log("adding an employee")
+      var mysql = req.app.get('mysql');
+      var sql = "INSERT INTO employees (firstName, lastName, phone, paymentInfo, hoursWorked) VALUES (?,?,?,?,?)";
+      var inserts = [req.body.firstName, req.body.lastName, req.body.phone, req.body.paymentInfo, req.body.hoursWorked];
+      sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+        if(error) {
+          console.log(JSON.stringify(error))
+          res.write(JSON.stringify(error));
+          res.end();
+        } else {
+          res.redirect('/employees');
+        }
+      });
+    });
 
 
 

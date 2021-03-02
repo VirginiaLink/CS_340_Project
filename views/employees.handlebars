@@ -32,9 +32,9 @@
 
         <article class="container" id="container">
             <h2>Add Employee</h2>
-            <form id = "addemployee">
-              First name: <input type="text" name="fname"><br>
-              Last name: <input type="text" name="lname"><br>
+            <form id = "addemployee" action = "/employees" method = "post">
+              First name: <input type="text" name="firstName"><br>
+              Last name: <input type="text" name="lastName"><br>
               Phone number: <input type="text" name="phone"><br>
               Payment method: <input type="text" name="paymentInfo"><br>
               Hours worked: <input type="number" name="hoursWorked"><br>
@@ -61,14 +61,22 @@
 
             <table style="width:100%" id="display-table">
               <thead>
+                <th>Employee ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <th>Phone Number</th>
+                <th>Payment Info</th>
+                <th>Hours Worked</th>
               </thead>
               <tbody>
                 {{#each employees}}
                 <tr>
+                  <td>{{employeeID}}</td>
                   <td>{{firstName}}</td>
                   <td>{{lastName}}</td>
+                  <td>{{phone}}</td>
+                  <td>{{paymentInfo}}</td>
+                  <td>{{hoursWorked}}</td>
                 </tr>
                 {{/each}}
               </tbody>
