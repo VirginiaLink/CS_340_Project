@@ -20,7 +20,7 @@ app.set('port', process.argv[2]);
 app.set('mysql', mysql);
 
 app.use('/employees', require('./employees.js'))
-// app.use('/customers', require('./customers.js'))
+app.use('/customers', require('./customers.js'))
 // app.use('/payments', require('./payments.js'))
 // app.use('/services', require('./services.js'))
 // app.use('/gear', require('./gear.js'))
