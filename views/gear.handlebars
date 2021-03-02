@@ -33,14 +33,12 @@
 
         <article class="container" id="container">
             <h2>Add Gear</h2>
-            <form>
-                <label="gearType" id="form-label">Gear type: </label>
-                    <input type="text" id="entry-box" name="gearType"><br>
-                    <label="lastServiceDate" id="form-label">Last service date: </label>
-                        <input type="text" id="entry-box" name="lastServiceDate"><br>
-                        <label="checkedOutID" id="form-label">Checked out ID: </label>
-                            <input type="text" id="entry-box" name="checkedOutID"><br>
-            </form>
+                <form id="addgear" action="/gear" method="post">
+                    Gear ID: <input type="text" name="gear"><br>
+                    Last Service Date: <input type="text" name="date"><br>
+                    Type: <input type="text" name="amount"><br>
+                    <input type="submit" value="Submit">
+                </form>
             <button type="button" id="button">Add</button>
         </article>
 
@@ -62,18 +60,22 @@
             <input type="text" placeholder="Filter by gear type">
             <button type="button" id="search-button">Search</button>
 
-            <table style="width:100%" id="display-table">
-                <tr id="display-table-row">
-                    <th id="display-table-item">Gear Type</th>
-                    <th id="display-table-item">Last Service Date</th>
-                    <th id="display-table-item">Checked Out ID</th>
+        <table style="width:100%" id="display-table">
+            <thead>
+                <th>Gear ID</th>
+                <th>Last Service Date</th>
+                <th>Type</th>
+            </thead>
+            <tbody>
+                {{#each gear}}
+                <tr>
+                    <td>{{gearID}}</td>
+                    <td>{{lastServiceDate}}/td>
+                    <td>{{gearType}}</td>
                 </tr>
-                <tr id="display-table-row">
-                    <td id="display-table-item">Checmical Sprayer</td>
-                    <td id="display-table-item">01/01/2021</td>
-                    <td id="display-table-item">NULL</td>
-                </tr>
-            </table>
+                {{/each}}
+            </tbody>
+        </table>
 
         </article>
 
