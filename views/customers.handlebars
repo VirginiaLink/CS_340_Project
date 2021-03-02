@@ -29,31 +29,38 @@
 
     <main class="big-container">
 
-
         <article class="container" id="container">
             <h2>Add Customer</h2>
-            <form>
-                <label="fname" id="form-label">First name: </label>
-                    <input type="text" id="entry-box" name="fname"><br>
-                    <label="lname" id="form-label">Last name: </label>
-                        <input type="text" id="entry-box" name="lname"><br>
-                        <label="phone" id="form-label">Phone number: </label>
-                            <input type="text" id="entry-box" name="phone"><br>
-                            <label="addressLine1" id="form-label">Address line 1: </label>
-                                <input type="text" id="entry-box" name="addressLine1"><br>
-                                <label="addressLine2" id="form-label">Address line 2: </label>
-                                    <input type="text" id="entry-box" name="addressLine2"><br>
-                                    <label="city" id="form-label">City: </label>
-                                        <input type="text" id="entry-box" name="city"><br>
-                                        <label="state" id="form-label">State: </label>
-                                            <input type="text" id="entry-box" name="state"><br>
-                                            <label="zip" id="form-label">Zip code: </label>
-                                                <input type="text" id="entry-box" name="zip"><br>
-                                                <label="currentBill" id="form-label">Current bill: </label>
-                                                    <input type="text" id="entry-box" name="currentBill"><br>
+            <form id="addcustomer" action="/customers" method="post">
+                First name: <input type="text" name="firstName"><br>
+                Last name: <input type="text" name="lastName"><br>
+                Phone number: <input type="text" name="phone"><br>
+                Address Line 1: <input type="text" name="address1"><br>
+                Address Line 2: <input type="text" name="address2"><br>
+                City: <input type="text" name="city"><br>
+                State: <input type="text" name="state"><br>
+                Zip: <input type="text" name="zip"><br>
+                Current Bill: <input type="text" name="currentBill"><br>
+                <input type="submit" value="Submit">
             </form>
-            <button type="button" id="button">Add</button>
+            <!-- <button type="button" id="button">Add</button> -->
         </article>
+
+        <article class="container" id="container">
+            <h2>Delete Customer from Records</h2>
+            <input type="text" id="entry-box" placeholder="Search by Customer ID">
+            <button type="button" id="search-button">Search</button><br>
+            <button type="button" id="button">Delete</button>
+        </article>
+
+        <article class="container" id="container">
+            <h2>Customers</h2>
+            <input type="text" placeholder="Filter by Customer ID">
+            <button type="button" id="search-button">Search</button>
+            <input type="text" placeholder="Filter by first name">
+            <button type="button" id="search-button">Search</button>
+            <input type="text" placeholder="Filter by last name">
+            <button type="button" id="search-button">Search</button><br>
 
         <table style="width:100%" id="display-table">
             <thead>
