@@ -48,7 +48,7 @@
             <button type="button" id="button">Delete</button>
         </article>
 
-        
+
         <article class="container" id="container">
             <h2>Payments</h2>
             <input type="text" placeholder="Filter by Customer ID">
@@ -57,7 +57,7 @@
             <button type="button" id="search-button">Search</button>
             <input type="text" placeholder="Filter by last name">
             <button type="button" id="search-button">Search</button><br>
-        
+
             <table style="width:100%" id="display-table">
                 <thead>
                     <th>Customer ID</th>
@@ -68,12 +68,12 @@
                     {{#each payments}}
                     <tr>
                         <td>{{customerID}}</td>
-                        <td>{{date}}</td>
+                        <td>{{paymentDate}}</td>
                         <td>{{amount}}</td>
                     </tr>
                     {{/each}}
                 </tbody>
-        
+
                 <!-- <tr id="display-table-row">
                             <th id="display-table-item">ID Number</th>
                             <th id="display-table-item">First Name</th>
@@ -91,10 +91,10 @@
                             <td id="display-table-item">100</td>
                         </tr> -->
             </table>
-        
-    </article>  
 
-        
+    </article>
+
+
 
 
         {{!-- <article class="container" id="container">

@@ -45,9 +45,13 @@
 
         <article class="container" id="container">
             <h2>Delete Employee</h2>
-            <input type="text" id="entry-box" placeholder="Search by Employee ID">
+            <form id = "deleteemployee" action = "/employees" method = "delete">
+              Employee ID: <input type="number" name="employeeID"><br>
+              <input type="submit" value="Submit">
+            </form>
+            <!-- <input type="text" id="entry-box" placeholder="Search by Employee ID">
             <button type="button" id="search-button">Search</button><br>
-            <button type="button" id="button">Delete</button>
+            <button type="button" id="button">Delete</button> -->
         </article>
 
         <article class="container" id="container">
@@ -77,6 +81,9 @@
                   <td>{{phone}}</td>
                   <td>{{paymentInfo}}</td>
                   <td>{{hoursWorked}}</td>
+                  <td><a href="/employees/{{employeeID}}">Update</a></td>
+                  <td><button onclick="deleteEmployee({{id}})">Delete</td>
+
                 </tr>
                 {{/each}}
               </tbody>

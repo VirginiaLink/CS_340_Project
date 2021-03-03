@@ -1,0 +1,13 @@
+<html>
+<h1>Update {{employee.firstName}} {{employee.lastName}}:</h1>
+<form id="update-employee" action="/employees" method="post">
+    First name: <input type="text" name="firstName" value="{{employee.firstName}}"><br>
+    Last name: <input type="text" name="lastName" value="{{employee.lastName}}"><br>
+    Phone number: <input type="text" name="phone" value="{{employee.phone}}"><br>
+    Payment method: <input type="text" name="paymentInfo" value="{{employee.paymentInfo}}"><br>
+    Hours worked: <input type="number" name="hoursWorked" value="{{employee.hoursWorked}}"><br>
+    </select><br>
+</form>
+<button onclick="updateEmployee({{employee.employeeID}})">Update</button>
+<!--<script defer>selectPlanet({{person.homeworld}});</script>-->
+</html>
