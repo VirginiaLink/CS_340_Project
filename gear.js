@@ -14,26 +14,26 @@ module.exports = function () {
         });
     }
 
-    function getGear(res, mysql, context, gearID, complete) {
-        var sql = "SELECT gearID, gearType, lastServiceDate, checkedOutID FROM gear WHERE gearID = ?";
-        var inserts = [gearID];
-        mysql.pool.query(sql, inserts, function (error, results, fields) {
-            if (error) {
-                res.write(JSON.stringify(error));
-                res.end();
-            }
-            context.gear = results[0];
-            console.log("--getting single gear")
-            complete();
-        });
-    }
+    // function getGear(res, mysql, context, gearID, complete) {
+    //     var sql = "SELECT gearID, gearType, lastServiceDate, checkedOutID FROM gear WHERE gearID = ?";
+    //     var inserts = [gearID];
+    //     mysql.pool.query(sql, inserts, function (error, results, fields) {
+    //         if (error) {
+    //             res.write(JSON.stringify(error));
+    //             res.end();
+    //         }
+    //         context.gear = results[0];
+    //         console.log("--getting single gear")
+    //         complete();
+    //     });
+    // }
 
 
     // -------------------------------------------------
 
     // Displays all gear in table
     router.get('/', function (req, res) {
-        console.log("in the get")
+        console.log("in gear get")
         var callbackCount = 0;
         var context = {};
         //context.jsscripts = [""]
@@ -51,8 +51,8 @@ module.exports = function () {
     router.post('/', function (req, res) {
         console.log("adding gear")
         var mysql = req.app.get('mysql');
-        var sql = "INSERT INTO gear (gearID, gearType, lastServiceDate, checkedOutID) VALUES (?,?,?,?)";
-        var inserts = [req.body.gearID, req.body.gearType, req.body.lastServiceDate, req.body.checkedOutID];
+        var sql = "INSERT INTO gear (gearType, lastServiceDate, checkedOutID) VALUES (?,?,?)";
+        var inserts = [req.body.gearType, req.body.lastServiceDate, req.body.checkedOutID];
         sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
             if (error) {
                 console.log(JSON.stringify(error))
