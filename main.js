@@ -24,7 +24,7 @@ app.use('/customers', require('./customers.js'))
 app.use('/payments', require('./payments.js'))
 // app.use('/services', require('./services.js'))
 // app.use('/gear', require('./gear.js'))
-// app.use('/certs', require('./certs.js'))
+app.use('/certs', require('./certs.js'))
 // app.use('/assignments', require('./assignments.js'))
 
 app.use('/', express.static('public'));
