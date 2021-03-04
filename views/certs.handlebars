@@ -31,13 +31,16 @@
 
         <article class="container" id="container">
             <h2>Add Certification</h2>
-            <form>
-                <label="certID" id="form-label">Certification ID (1 or more): </label>
+            <form id = "addcert" action = "/certs" method="post">
+              Employee ID: <input type="number" name="certifiedEmployees"><br>
+              Service Type: <input type="text" name="serviceType"><br>
+              <input type="submit" value="Submit">
+                <!-- <label="certID" id="form-label">Certification ID (1 or more): </label>
                     <input type="text" id="entry-box" name="certID"><br>
                     <label="employeeID" id="form-label">Employee ID (1 or more): </label>
-                        <input type="text" id="entry-box" name="employeeID"><br>
+                        <input type="text" id="entry-box" name="employeeID"><br> -->
             </form>
-            <button type="button" id="button">Add</button>
+            <!-- <button type="button" id="button">Add</button> -->
         </article>
 
         <!-- Not to punish employees, maybe their cert just expired...-->
@@ -60,11 +63,23 @@
             <button type="button" id="search-button">Search</button>
 
             <table style="width:100%" id="display-table">
-                <tr id="display-table-row">
+              <thead>
+                <th>Employee ID</th>
+                <th>Service Type</th>
+              </thead>
+              <tbody>
+                {{#each certs}}
+                <tr>
+                  <td>{{certifiedEmployees}}</td>
+                  <td>{{serviceType}}</td>
+                </tr>
+                {{/each}}
+              </tbody>
+                <!-- <tr id="display-table-row">
                     <th id="display-table-item">Employee ID</th>
                     <th id="display-table-item">Certification ID</th>
                     <th id="display-table-item">Certification Name</th>
-                </tr>
+                </tr> -->
             </table>
 
         </article>
