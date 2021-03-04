@@ -35,21 +35,24 @@
                     Gear ID: <input type="text" name="gear"><br>
                     Last Service Date: <input type="text" name="date"><br>
                     Type: <input type="text" name="amount"><br>
+                    Checked Out by Employee ID: <input type="text" name="checkedOutID"><br>
                     <input type="submit" value="Submit">
                 </form>
-            <button type="button" id="button">Add</button>
+            {{!-- <button type="button" id="button">Add</button> --}}
         </article>
+
 
         <article class="container" id="container">
             <h2>Gear</h2>
             <input type="text" placeholder="Filter by gear type">
             <button type="button" id="search-button">Search</button>
 
-        <table style="width:100%" id="display-table">
+            <table style="width:100%" id="display-table">
             <thead>
                 <th>Gear ID</th>
                 <th>Last Service Date</th>
                 <th>Type</th>
+                <th>Checked Out by Employee ID</th>
             </thead>
             <tbody>
                 {{#each gear}}
@@ -57,11 +60,13 @@
                     <td>{{gearID}}</td>
                     <td>{{lastServiceDate}}/td>
                     <td>{{gearType}}</td>
+                    <td>{{checkedOutID}}</td>
+                    <td><a href="/gear/{{gearID}}">Update</a></td>
+                    <td><button onclick="deleteGear({{gearID}})">Delete</td>
                 </tr>
                 {{/each}}
             </tbody>
-        </table>
-
+            </table>
         </article>
 
     </main>

@@ -42,3 +42,13 @@ function deleteCert(certifiedEmployees, serviceType){
     }
   })
 };
+
+function deleteGear(gearID) {
+    $.ajax({
+        url: '/gear/' + gearID,
+        type: 'DELETE',
+        success: function (result) {
+            window.location.reload(true);
+        }
+    })
+};
