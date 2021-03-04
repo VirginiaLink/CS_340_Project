@@ -104,11 +104,11 @@ module.exports = function () {
         });
     });
 
-    router.delete('/:id', function (req, res) {
+    router.delete('/:paymentNum', function (req, res) {
 
         var mysql = req.app.get('mysql');
         var sql = "DELETE FROM payments WHERE paymentNum = ?";
-        var inserts = [req.params.id];
+        var inserts = [req.params.paymentNum];
         console.log("IN DELETE: ")
         sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
             if (error) {

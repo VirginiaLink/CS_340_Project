@@ -50,25 +50,5 @@ module.exports = function(){
         });
 
 
-        //delete a Certification
-        router.delete('/employeeID/:certifiedEmployees/cert/:serviceType', function(req, res){
-            //console.log(req) //I used this to figure out where did pid and cid go in the request
-            console.log(req.params.certifiedEmployees)
-            console.log(req.params.serviceType)
-            var mysql = req.app.get('mysql');
-            var sql = "DELETE FROM certs WHERE certifiedEmployees = ? AND serviceType = ?";
-            var inserts = [req.params.certifiedEmployees, req.params.serviceType];
-            sql = mysql.pool.query(sql, inserts, function(error, results, fields){
-                if(error){
-                    res.write(JSON.stringify(error));
-                    res.status(400);
-                    res.end();
-                }else{
-                    res.status(202).end();
-                }
-            })
-        })
-
-
   return router;
 }();
