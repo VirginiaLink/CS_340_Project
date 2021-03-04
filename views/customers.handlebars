@@ -46,9 +46,10 @@
 
         <article class="container" id="container">
             <h2>Delete Customer from Records</h2>
-            <input type="text" id="entry-box" placeholder="Search by Customer ID">
-            <button type="button" id="search-button">Search</button><br>
-            <button type="button" id="button">Delete</button>
+            <form id="deletecustomer" action="/customers" method="delete">
+                Customer ID: <input type="number" name="customerID"><br>
+                <input type="submit" value="Submit">
+            </form>
         </article>
 
         <article class="container" id="container">
@@ -86,6 +87,8 @@
                     <td>{{state}}</td>
                     <td>{{zip}}</td>
                     <td>{{currentBill}}</td>
+                    <td><a href="/customers/{{customerID}}">Update</a></td>
+                    <td><button onclick="deleteCustomer({{customerID}})">Delete</td>
                 </tr>
                 {{/each}}
             </tbody>
