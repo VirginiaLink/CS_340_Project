@@ -112,8 +112,21 @@ module.exports = function () {
     });
 
     router.delete('/:id', function (req, res) {
-
         var mysql = req.app.get('mysql');
+        // removing from assignments first
+        var sql = "DELETE FROM assignments WHERE customerID = ?";
+        var inserts = [req.params.id];
+        console.log("IN DELETE: ")
+        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+          if(error){
+            console.log(error)
+            res.write(JSON.stringify(error));
+            res.status(400);
+            res.end();
+          }else{
+          }
+        })
+
         var sql = "DELETE FROM customers WHERE customerID = ?";
         var inserts = [req.params.id];
         console.log("IN DELETE: ")

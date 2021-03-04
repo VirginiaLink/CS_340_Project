@@ -107,7 +107,7 @@ module.exports = function(){
     router.delete('/:id', function(req,res) {
 
       var mysql = req.app.get('mysql');
-      //testing WHERE
+      // removing certification first
       var sql = "DELETE FROM certs WHERE certifiedEmployees = ?";
       var inserts = [req.params.id];
       console.log("IN DELETE: ")
@@ -120,8 +120,21 @@ module.exports = function(){
         }else{
         }
       })
-      //end test my guy
-
+      // removing assignments first
+      var sql = "DELETE FROM assignments WHERE employeeID = ?";
+      var inserts = [req.params.id];
+      console.log("IN DELETE: ")
+      sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+        if(error){
+          console.log(error)
+          res.write(JSON.stringify(error));
+          res.status(400);
+          res.end();
+        }else{
+        }
+      })
+      
+      // delete from employees
       var sql = "DELETE FROM employees WHERE employeeID = ?";
       var inserts = [req.params.id, req.params.id];
       console.log("IN DELETE: ")
