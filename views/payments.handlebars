@@ -59,6 +59,7 @@
             <table style="width:100%" id="display-table">
                 <thead>
                     <th>Customer ID</th>
+                    <th>paymentNum</th>
                     <th>Date</th>
                     <th>Amount</th>
                 </thead>
@@ -66,8 +67,11 @@
                     {{#each payments}}
                     <tr>
                         <td>{{customerID}}</td>
+                        <td>{{paymentNum}}</td>
                         <td>{{paymentDate}}</td>
                         <td>{{amount}}</td>
+                        <td><a href="/payments/{{paymentNum}}">Update</a></td>
+                        <td><button onclick="deletePayment({{paymentNum}})">Delete</td>
                     </tr>
                     {{/each}}
                 </tbody>
