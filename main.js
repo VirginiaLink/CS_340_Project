@@ -22,8 +22,13 @@ app.set('mysql', mysql);
 app.use('/employees', require('./employees.js'))
 app.use('/customers', require('./customers.js'))
 app.use('/payments', require('./payments.js'))
+<<<<<<< HEAD
 app.use('/services', require('./services.js'))
 // app.use('/gear', require('./gear.js'))
+=======
+// app.use('/services', require('./services.js'))
+app.use('/gear', require('./gear.js'))
+>>>>>>> cc7e8c52a1bc7d0c8c01d83f42ba1da266622c79
 app.use('/certs', require('./certs.js'))
 // app.use('/assignments', require('./assignments.js'))
 
