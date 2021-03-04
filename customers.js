@@ -13,6 +13,24 @@ module.exports = function () {
         });
     }
 
+    // Function to get a single customer
+    function getCustomer(res, mysql, context, customerID, complete) {
+        var sql = "SELECT customerID, firstName, lastName, phone, address1, address2, city, state, zip, currentBill FROM customers WHERE customerID = ?";
+        var inserts = [customerID];
+        mysql.pool.query(sql, inserts, function (error, results, fields) {
+            if (error) {
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.customer = results[0];
+            console.log("--getting single customer")
+            complete();
+        });
+    }
+
+
+
+
     // -------------------------------------------------
 
     // Displays all customers in table
@@ -20,7 +38,7 @@ module.exports = function () {
         console.log("in the get")
         var callbackCount = 0;
         var context = {};
-        //context.jsscripts = [""]
+        context.jsscripts = ["deleteCustomer.js"]
         var mysql = req.app.get('mysql');
         getCustomers(res, mysql, context, complete);
         function complete() {
@@ -31,7 +49,7 @@ module.exports = function () {
         }
     });
 
-
+    // Add customers
     router.post('/', function (req, res) {
         console.log("Adding a customer")
         var mysql = req.app.get('mysql');
@@ -48,6 +66,68 @@ module.exports = function () {
             }
         });
     });
+
+
+    // Display a single person to update
+    router.get('/:customerID', function (req, res) {
+        callbackCount = 0;
+        var context = {};
+        context.jsscripts = ["updateCustomer.js"];
+        var mysql = req.app.get('mysql');
+        console.log("The customerID is: " + req.params.customerID)
+        getEmployee(res, mysql, context, req.params.customerID, complete);
+        function complete() {
+            callbackCount++;
+            if (callbackCount >= 1) {
+                console.log("Sending context to update-customer")
+                res.render('update-customer', context);
+            }
+        }
+    });
+
+    //firstName, lastName, phone, address1, address2, city, state, zip, currentBill
+
+
+    // Actually update customers
+    router.put('/:customerID', function (req, res) {
+        var mysql = req.app.get('mysql');
+        console.log("# " + req.body)
+        console.log("## " + req.params.customerID)
+        var sql = "UPDATE customers SET firstName = ?, lastName = ?, phone = ?, address1 = ?, address2 = ?, city = ?, state = ?, zip = ?, currentBill = ? WHERE customerID = ?";
+        var inserts = [req.body.firstName, req.body.lastName, req.body.phone, req.body.address1
+            , req.body.address2, req.body.city, req.body.state, req.body.zip, req.body.currentBill, req.body.customerID];
+        console.log("###### queried: " + sql)
+
+        sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
+            if (error) {
+                console.log(error)
+                res.write(JSON.stringify(error));
+                res.end();
+            } else {
+                console.log("Changing to " + req.body.firstName)
+                res.status(200);
+                res.end();
+            }
+        });
+    });
+
+    router.delete('/:id', function (req, res) {
+
+        var mysql = req.app.get('mysql');
+        var sql = "DELETE FROM customers WHERE customerID = ?";
+        var inserts = [req.params.id];
+        console.log("IN DELETE: ")
+        sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
+            if (error) {
+                console.log(error)
+                res.write(JSON.stringify(error));
+                res.status(400);
+                res.end();
+            } else {
+                res.status(202).end();
+            }
+        })
+    })
 
     return router;
 }();
