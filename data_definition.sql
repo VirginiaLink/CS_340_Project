@@ -117,9 +117,9 @@ VALUES (1, '02/13/21', 50),
 
 UNLOCK TABLE;
 
--- Table structure for 'customers_employees'
-DROP TABLE IF EXISTS `customers_employees`;
-CREATE TABLE `customers_employees` (
+-- Table structure for 'assignments'
+DROP TABLE IF EXISTS `assignments`;
+CREATE TABLE `assignments` (
   `customerID` int(11),
   `employeeID` int(11),
   PRIMARY KEY (`customerID`, `employeeID`),
@@ -128,10 +128,10 @@ CREATE TABLE `customers_employees` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
--- Dumping data for table 'customers_employees'
-LOCK TABLES `customers_employees` WRITE;
+-- Dumping data for table 'assignments'
+LOCK TABLES `assignments` WRITE;
 
-INSERT INTO `customers_employees` (customerID, employeeID)
+INSERT INTO `assignments` (customerID, employeeID)
 VALUES (1, 1),
 (2, 2),
 (3, 3);

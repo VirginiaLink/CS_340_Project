@@ -30,25 +30,11 @@
 
         <article class="container" id="container">
             <h2>New Assignment</h2>
-            <form>
-                <label="employeeID" id="form-label">Employee ID (1 or more): </label>
-                    <input type="text" id="entry-box" name="emplyoyeeID"><br>
-                    <label="customerID" id="form-label">Customer ID (1 or more): </label>
-                        <input type="text" id="entry-box" name="customerID"><br>
+            <form id="addassignment" action="/assignments" method="post">
+                Employee ID: <input type="text" name="employeeID"><br>
+                Customer ID: <input type="text" name="customerID"><br>
+                <input type="submit" value="Submit">
             </form>
-            <button type="button" id="button">Add</button>
-        </article>
-
-        <article class="container" id="container">
-            <h2>Modify Assignment</h2>
-            <form>
-                <label="employeeID" id="form-label">Employee ID (1 or more): </label>
-                    <input type="text" id="entry-box" name="employeeID"><br>
-                    <label="certID" id="form-label">Customer ID (1 or more): </label>
-                        <input type="text" id="entry-box" name="certID"><br>
-            </form>
-            <button type="button" id="button">Remove Employee from Assignment</button>
-            <button type="button" id="button">Cancel Assignment</button>
         </article>
 
         <article class="container" id="container">
@@ -59,11 +45,18 @@
             <button type="button" id="search-button">Search</button>
 
             <table style="width:100%" id="display-table">
-                <tr id="display-table-row">
-                    <th id="display-table-item">Employee ID</th>
-                    <th id="display-table-item">Customer ID</th>
-                    <th id="display-table-item">Appointment Date/Time</th>
+              <thead>
+                <th>Employee ID</th>
+                <th>Customer ID</th>
+              </thead>
+              <tbody>
+                {{#each assignments}}
+                <tr>
+                  <td>{{employeeID}}</td>
+                  <td>{{customerID}}</td>
                 </tr>
+                {{/each}}
+              </tbody>
             </table>
 
         </article>
