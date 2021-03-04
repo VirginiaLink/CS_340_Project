@@ -38,7 +38,7 @@ module.exports = function () {
         console.log("in the get")
         var callbackCount = 0;
         var context = {};
-        context.jsscripts = ["deleteCustomer.js"]
+        context.jsscripts = ["delete.js"]
         var mysql = req.app.get('mysql');
         getCustomers(res, mysql, context, complete);
         function complete() {
@@ -72,7 +72,7 @@ module.exports = function () {
     router.get('/:customerID', function (req, res) {
         callbackCount = 0;
         var context = {};
-        context.jsscripts = ["updateCustomer.js"];
+        context.jsscripts = ["update.js"];
         var mysql = req.app.get('mysql');
         console.log("The customerID is: " + req.params.customerID)
         getEmployee(res, mysql, context, req.params.customerID, complete);
