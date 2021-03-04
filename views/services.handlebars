@@ -30,17 +30,13 @@
 
         <article class="container" id="container">
             <h2>Add Services</h2>
-            <form>
-                <label="serviceType" id="form-label">Service type: </label>
-                    <input type="text" id="entry-box" name="serviceType"><br>
-                    <label="gearNeeded" id="form-label">Gear needed: </label>
-                        <input type="text" id="entry-box" name="gearNeeded"><br>
-                        <label="cost" id="form-label">Cost: </label>
-                            <input type="text" id="entry-box" name="cost"><br>
+            <form id="addservice" action="/services" method="post" >
+                Service type: <input type="text" name="serviceType"><br>
+                Gear needed: <input type="text" name="gearNeeded"><br>
+                Cost: <input type="number" name="cost"><br>
+                <input type="submit" value="Submit">
             </form>
-            <button type="button" id="button">Add</button>
         </article>
-
 
         <article class="container" id="container">
             <h2>Services</h2>
@@ -48,22 +44,23 @@
             <button type="button" id="search-button">Search</button>
 
             <table style="width:100%" id="display-table">
-                <tr id="display-table-row">
-                    <th id="display-table-item">Service Type</th>
-                    <th id="display-table-item">Gear Needed</th>
-                    <th id="display-table-item">Cost</th>
-                </tr>
-                <tr id="display-table-row">
-                    <td id="display-table-item">Inspection</td>
-                    <td id="display-table-item">NULL</td>
-                    <td id="display-table-item">50</td>
-                </tr>
+                <thead>
+                  <th>Service type</th>
+                  <th>Gear needed</th>
+                  <th>Cost</th>
+                </thead>
+                <tbody>
+                  {{#each services}}
+                  <tr>
+                    <td>{{serviceType}}</td>
+                    <td>{{gearNeeded}}</td>
+                    <td>{{cost}}</td>
+                  </tr>
+                  {{/each}}
+                </tbody>
             </table>
-
         </article>
-
     </main>
-
 
 </body>
 
