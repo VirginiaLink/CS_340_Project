@@ -87,7 +87,7 @@ module.exports = function () {
         var mysql = req.app.get('mysql');
         console.log("# " + req.body)
         console.log("## " + req.params.paymentNum)
-        var sql = "UPDATE payments SET customerID = ?, paymentNum = ?, paymentDate = ?, amount = ? WHERE paymentNum = ?;
+        var sql = "UPDATE payments SET customerID = ?, paymentNum = ?, paymentDate = ?, amount = ? WHERE paymentNum = ?";
         var inserts = [req.body.customerID, req.body.paymentNum, req.body.paymentDate, req.body.amount];
         console.log("###### queried: " + sql)
 
