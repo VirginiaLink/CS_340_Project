@@ -14,19 +14,20 @@ module.exports = function () {
         });
     }
 
-    // function getGear(res, mysql, context, gearID, complete) {
-    //     var sql = "SELECT gearID, gearType, lastServiceDate, checkedOutID FROM gear WHERE gearID = ?";
-    //     var inserts = [gearID];
-    //     mysql.pool.query(sql, inserts, function (error, results, fields) {
-    //         if (error) {
-    //             res.write(JSON.stringify(error));
-    //             res.end();
-    //         }
-    //         context.gear = results[0];
-    //         console.log("--getting single gear")
-    //         complete();
-    //     });
-    // }
+    // Get one instance of gear to update
+    function getOneGear(res, mysql, context, gearID, complete) {
+        var sql = "SELECT gearID, gearType, lastServiceDate, checkedOutID FROM gear WHERE gearID = ?";
+        var inserts = [gearID];
+        mysql.pool.query(sql, inserts, function (error, results, fields) {
+            if (error) {
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.gearu = results[0];
+            console.log("--getting single gear")
+            complete();
+        });
+    }
 
 
     // -------------------------------------------------
@@ -36,7 +37,7 @@ module.exports = function () {
         console.log("in gear get")
         var callbackCount = 0;
         var context = {};
-        //context.jsscripts = [""]
+        context.jsscripts = ["delete.js"]
         var mysql = req.app.get('mysql');
         getGear(res, mysql, context, complete);
         function complete() {
@@ -72,8 +73,8 @@ module.exports = function () {
         context.jsscripts = ["update.js"];
         var mysql = req.app.get('mysql');
         console.log("The gearID is: " + req.params.gearID)
-        getGear(res, mysql, context, req.params.gearID, complete);
-        function complete() {
+        getOneGear(res, mysql, context, req.params.gearID, complete);
+        function complete(){
             callbackCount++;
             if (callbackCount >= 1) {
                 console.log("Sending context to update-gear")
@@ -87,17 +88,16 @@ module.exports = function () {
         var mysql = req.app.get('mysql');
         console.log("# " + req.body)
         console.log("## " + req.params.gearID)
-        var sql = "UPDATE gear SET gearID = ?, gearType = ?, lastServiceDate = ?, checkedOutID = ? WHERE gearID = ?";
-        var inserts = [req.body.gearID, req.body.gearType, req.body.lastServiceDate, req.body.checkedOutID];
+        var sql = "UPDATE gear SET gearType = ?, lastServiceDate = ?, checkedOutID = ? WHERE gearID = ?";
+        var inserts = [req.body.gearType, req.body.lastServiceDate, req.body.checkedOutID, req.body.gearID];
         console.log("###### queried: " + sql)
-
         sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
             if (error) {
                 console.log(error)
                 res.write(JSON.stringify(error));
                 res.end();
             } else {
-                console.log("Changing to " + req.body.gearID)
+                console.log("queried database with: " + results.affectedRows)
                 res.status(200);
                 res.end();
             }
@@ -105,10 +105,9 @@ module.exports = function () {
     });
 
     router.delete('/:gearID', function (req, res) {
-
         var mysql = req.app.get('mysql');
         var sql = "DELETE FROM gear WHERE gearID = ?";
-        var inserts = [req.gearID];
+        var inserts = [req.params.gearID];
         console.log("IN DELETE: ")
         sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
             if (error) {

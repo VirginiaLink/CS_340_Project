@@ -1,0 +1,9 @@
+<html>
+<h1>Update {{gearu.gearType}}:</h1>
+<form id="update-gear" action="/gear" method="post">
+    Type: <input type="text" name="gearType" value="{{gearu.gearType}}"><br>
+    Last Service Date: <input type="text" name="lastServiceDate" value="{{gearu.lastServiceDate}}"><br>
+    Checked Out by Employee ID: <input type="text" name="checkedOutID" value="{{gearu.checkedOutID}}"><br>
+</form>
+<button onclick="updateGear({{gearu.gearID}})">Update</button>
+</html>

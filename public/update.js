@@ -38,3 +38,14 @@ function updatePayment(paymentID) {
 };
 
 
+// testing down here
+function updateGear(gearID){
+    $.ajax({
+        url: '/gear/' + gearID,
+        type: 'PUT',
+        data: $('#update-gear').serialize(),
+        success: function(result){
+            window.location.replace("./");
+        }
+    })
+};

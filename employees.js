@@ -133,7 +133,7 @@ module.exports = function(){
         }else{
         }
       })
-      
+
       // delete from employees
       var sql = "DELETE FROM employees WHERE employeeID = ?";
       var inserts = [req.params.id, req.params.id];
