@@ -24,7 +24,7 @@ module.exports = function () {
         console.log("in services get")
         var callbackCount = 0;
         var context = {};
-        //context.jsscripts = [""]
+        context.jsscripts = ["delete.js"]
         var mysql = req.app.get('mysql');
         getServices(res, mysql, context, complete);
         function complete() {
@@ -51,6 +51,25 @@ module.exports = function () {
             }
         });
     });
+
+    // delete from services
+    router.delete('/:id', function (req, res) {
+      var mysql = req.app.get('mysql');
+      var sql = "DELETE FROM services WHERE serviceType = ?";
+      var inserts = [req.params.id];
+      console.log("IN service DELETE: ")
+      sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+        if(error){
+          console.log(error)
+          res.write(JSON.stringify(error));
+          res.status(400);
+          res.end();
+        }else{
+          res.status(202).end();
+        }
+      })
+    })
+
 
     return router;
 }();

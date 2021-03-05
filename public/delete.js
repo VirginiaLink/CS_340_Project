@@ -52,3 +52,13 @@ function deleteGear(gearID) {
         }
     })
 };
+
+function deleteService(serviceType) {
+    $.ajax({
+        url: '/services/' + serviceType,
+        type: 'DELETE',
+        success: function (result) {
+            window.location.reload(true);
+        }
+    })
+};

@@ -72,13 +72,13 @@
                     <td>{{firstName}}</td>
                     <td>{{lastName}}</td>
                     <td>{{phone}}</td>
-                    <td>{{addressLine1}}</td>
-                    <td>{{addressLine2}}</td>
+                    <td>{{address1}}</td>
+                    <td>{{address2}}</td>
                     <td>{{city}}</td>
                     <td>{{state}}</td>
                     <td>{{zip}}</td>
                     <td>{{currentBill}}</td>
-                    <td><a href="/customers/{{customerID}}">Update</a></td>
+                    <td><a id="update-button" href="/customers/{{customerID}}">Update</a></td>
                     <td><button onclick="deleteCustomer({{customerID}})">Delete</td>
                 </tr>
                 {{/each}}

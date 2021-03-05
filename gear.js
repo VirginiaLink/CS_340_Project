@@ -97,7 +97,9 @@ module.exports = function () {
                 res.write(JSON.stringify(error));
                 res.end();
             } else {
-                console.log("queried database with: " + results.affectedRows)
+                console.log("number of rows affected: " + results.affectedRows)
+                console.log("row was: " + results.affectedRows)
+
                 res.status(200);
                 res.end();
             }

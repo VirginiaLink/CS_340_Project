@@ -96,3 +96,7 @@ a:hover {
 #form-label {
   padding: 5px;
 }
+
+#update-button {
+  color: black;
+}
