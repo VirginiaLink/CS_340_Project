@@ -75,7 +75,7 @@ module.exports = function () {
         context.jsscripts = ["update.js"];
         var mysql = req.app.get('mysql');
         console.log("The customerID is: " + req.params.customerID)
-        getEmployee(res, mysql, context, req.params.customerID, complete);
+        getCustomer(res, mysql, context, req.params.customerID, complete);
         function complete() {
             callbackCount++;
             if (callbackCount >= 1) {

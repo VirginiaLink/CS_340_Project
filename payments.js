@@ -14,7 +14,7 @@ module.exports = function () {
         });
     }
 
-    function getPayment(res, mysql, context, employeeID, complete) {
+    function getPayment(res, mysql, context, paymentID, complete) {
         var sql = "SELECT customerID, paymentNum, paymentDate, amount FROM payments WHERE paymentNum = ?";
         var inserts = [paymentNum];
         mysql.pool.query(sql, inserts, function (error, results, fields) {
@@ -72,7 +72,7 @@ module.exports = function () {
         context.jsscripts = ["update.js"];
         var mysql = req.app.get('mysql');
         console.log("The paymentNum is: " + req.params.paymentNum)
-        getEmployee(res, mysql, context, req.params.paymentNum, complete);
+        getPayment(res, mysql, context, req.params.paymentNum, complete);
         function complete() {
             callbackCount++;
             if (callbackCount >= 1) {
@@ -88,7 +88,7 @@ module.exports = function () {
         console.log("# " + req.body)
         console.log("## " + req.params.paymentNum)
         var sql = "UPDATE payments SET customerID = ?, paymentNum = ?, paymentDate = ?, amount = ? WHERE paymentNum = ?";
-        var inserts = [req.body.customerID, req.body.paymentNum, req.body.paymentDate, req.body.amount];
+        var inserts = [req.body.customerID, req.params.paymentNum, req.body.paymentDate, req.body.amount];
         console.log("###### queried: " + sql)
 
         sql = mysql.pool.query(sql, inserts, function (error, results, fields) {

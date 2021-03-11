@@ -88,7 +88,7 @@ module.exports = function(){
       console.log("# " + req.body)
       console.log("## " + req.params.employeeID)
       var sql = "UPDATE employees SET firstName = ?, lastName = ?, phone = ?, paymentInfo = ?, hoursWorked = ? WHERE employeeID = ?";
-      var inserts = [req.body.firstName, req.body.lastName, req.body.phone, req.body.paymentInfo, req.body.hoursWorked, req.body.employeeID];
+      var inserts = [req.body.firstName, req.body.lastName, req.body.phone, req.body.paymentInfo, req.body.hoursWorked, req.params.employeeID];
       console.log("###### queried: " + sql)
 
       sql = mysql.pool.query(sql, inserts, function(error, results, fields) {
@@ -97,7 +97,7 @@ module.exports = function(){
           res.write(JSON.stringify(error));
           res.end();
         } else {
-          console.log("Changing to " + req.body.firstName)
+          console.log("sql used " + sql.sql)
           res.status(200);
           res.end();
         }

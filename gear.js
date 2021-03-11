@@ -89,7 +89,7 @@ module.exports = function () {
         console.log("# " + req.body)
         console.log("## " + req.params.gearID)
         var sql = "UPDATE gear SET gearType = ?, lastServiceDate = ?, checkedOutID = ? WHERE gearID = ?";
-        var inserts = [req.body.gearType, req.body.lastServiceDate, req.body.checkedOutID, req.body.gearID];
+        var inserts = [req.body.gearType, req.body.lastServiceDate, req.body.checkedOutID, req.params.gearID];
         console.log("###### queried: " + sql)
         sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
             if (error) {
