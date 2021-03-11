@@ -14,7 +14,7 @@ module.exports = function () {
         });
     }
 
-    function getPayment(res, mysql, context, paymentID, complete) {
+    function getPayment(res, mysql, context, paymentNum, complete) {
         var sql = "SELECT customerID, paymentNum, paymentDate, amount FROM payments WHERE paymentNum = ?";
         var inserts = [paymentNum];
         mysql.pool.query(sql, inserts, function (error, results, fields) {
@@ -23,7 +23,7 @@ module.exports = function () {
                 res.end();
             }
             context.payment = results[0];
-            console.log("--getting single payment")
+            console.log("--sql: " + mysql.sql)
             complete();
         });
     }
@@ -76,7 +76,7 @@ module.exports = function () {
         function complete() {
             callbackCount++;
             if (callbackCount >= 1) {
-                console.log("Sending context to update-payment")
+                console.log("Sending context to update-payment --- " + req.params.paymentNum + " " +req.body.customerID + " " + req.body.paymentDate + " " + req.body.amount)
                 res.render('update-payment', context);
             }
         }
@@ -87,7 +87,7 @@ module.exports = function () {
         var mysql = req.app.get('mysql');
         console.log("# " + req.body)
         console.log("## " + req.params.paymentNum)
-        var sql = "UPDATE payments SET customerID = ?, paymentNum = ?, paymentDate = ?, amount = ? WHERE paymentNum = ?";
+        var sql = "UPDATE payments SET customerID = ?, paymentDate = ?, amount = ? WHERE paymentNum = ?";
         var inserts = [req.body.customerID, req.params.paymentNum, req.body.paymentDate, req.body.amount];
         console.log("###### queried: " + sql)
 
@@ -97,7 +97,7 @@ module.exports = function () {
                 res.write(JSON.stringify(error));
                 res.end();
             } else {
-                console.log("Changing to " + req.body.paymentNum)
+                console.log("sql: " + sql.sql)
                 res.status(200);
                 res.end();
             }
