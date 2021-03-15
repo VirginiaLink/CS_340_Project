@@ -29,6 +29,19 @@ module.exports = function () {
     }
 
 
+    // Funciton to get all customers with a bill larger than a specified number
+    function getCustomersByBill(req, res, mysql, context, complete) {
+      var query = "SELECT customerID, firstName, lastName, phone, address1, address2, city, state, zip, currentBill FROM customers WHERE currentBill > ?"
+      var inserts = [req.params.currentBill]
+      mysql.pool.query(query, inserts, function(error, results, fields) {
+        if(error){
+          res.write(JSON.stringify(error));
+          res.end();
+        }
+        context.customer = results;
+        complete();
+      });
+    }
 
 
     // -------------------------------------------------
@@ -95,7 +108,7 @@ module.exports = function () {
         console.log("## " + req.params.customerID)
         var sql = "UPDATE customers SET firstName = ?, lastName = ?, phone = ?, address1 = ?, address2 = ?, city = ?, state = ?, zip = ?, currentBill = ? WHERE customerID = ?";
         var inserts = [req.body.firstName, req.body.lastName, req.body.phone, req.body.address1
-            , req.body.address2, req.body.city, req.body.state, req.body.zip, req.body.currentBill, req.body.customerID];
+            , req.body.address2, req.body.city, req.body.state, req.body.zip, req.body.currentBill, req.params.customerID];
         console.log("###### queried: " + sql)
 
         sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
@@ -104,7 +117,7 @@ module.exports = function () {
                 res.write(JSON.stringify(error));
                 res.end();
             } else {
-                console.log("Changing to " + req.body.firstName)
+                console.log("sql used " + sql.sql)
                 res.status(200);
                 res.end();
             }

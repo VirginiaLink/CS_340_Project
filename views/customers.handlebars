@@ -38,10 +38,17 @@
                 City: <input type="text" name="city"><br>
                 State: <input type="text" name="state"><br>
                 Zip: <input type="text" name="zip"><br>
-                Current Bill: <input type="text" name="currentBill"><br>
+                Current Bill: <input type="number" name="currentBill"><br>
                 <input type="submit" value="Submit">
             </form>
         </article>
+
+        <form id = 'filer_customers' action="" method="" >
+          <label>Find customers with a bill higher than a specified amount:</label>
+          <input id="search_amount" type="number" name="search_amount" value="">
+          <input type="button" value="Search" onclick="searchCustomersByBill()">
+        </form>
+
 
         <article class="container" id="container">
             <h2>Customers</h2>

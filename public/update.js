@@ -1,5 +1,4 @@
 function updateEmployee(employeeID) {
-    console.log("From the ajax: " + employeeID)
     $.ajax({
         url: '/employees/' + employeeID,
         type: 'PUT',
@@ -8,11 +7,9 @@ function updateEmployee(employeeID) {
             window.location.replace("./");
         }
     })
-    console.log("From the ajax: " + employeeID)
 };
 
 function updateCustomer(customerID) {
-    console.log("From the ajax: " + customerID)
     $.ajax({
         url: '/customers/' + customerID,
         type: 'PUT',
@@ -21,11 +18,9 @@ function updateCustomer(customerID) {
             window.location.replace("./");
         }
     })
-    console.log("From the ajax: " + customerID)
 };
 
 function updatePayment(paymentID) {
-    console.log("From the ajax: " + paymentID)
     $.ajax({
         url: '/payments/' + paymentID,
         type: 'PUT',
@@ -38,7 +33,6 @@ function updatePayment(paymentID) {
 };
 
 
-// testing down here
 function updateGear(gearID){
     $.ajax({
         url: '/gear/' + gearID,
