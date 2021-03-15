@@ -40,15 +40,11 @@
 
         <article class="container" id="container">
             <h2>Active Assignments</h2>
-            <input type="text" placeholder="Filter by Customer ID">
-            <button type="button" id="search-button">Search</button>
-            <input type="text" placeholder="Filter by Employee ID">
-            <button type="button" id="search-button">Search</button>
 
             <table style="width:100%" id="display-table">
               <thead>
-                <th>Employee ID</th>
-                <th>Customer ID</th>
+                <th>Employee Last Name</th>
+                <th>Customer Last Name</th>
               </thead>
               <tbody>
                 {{#each assignments}}

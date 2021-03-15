@@ -4,7 +4,7 @@ module.exports = function () {
 
     // get all assignments
     function getAssignments(res, mysql, context, complete) {
-        mysql.pool.query("SELECT employeeID, customerID FROM assignments", function (error, results, fields) {
+        mysql.pool.query("SELECT employees.lastName AS employeeID, customers.lastName AS customerID FROM assignments INNER JOIN customers ON assignments.customerID = customers.customerID INNER JOIN employees ON assignments.employeeID = employees.employeeID", function (error, results, fields) {
             if (error) {
                 res.write(JSON.stringify(error));
                 res.end();
