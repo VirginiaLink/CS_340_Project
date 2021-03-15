@@ -43,21 +43,17 @@
             </form>
         </article>
 
-        <form id = 'filer_customers' action="" method="" >
-          <label>Find customers with a bill higher than a specified amount:</label>
-          <input id="search_amount" type="number" name="search_amount" value="">
-          <input type="button" value="Search" onclick="searchCustomersByBill()">
-        </form>
+        <article class="container" id="container">
+          <form id = 'filer_customers' action="" method="" >
+            <label>Filter customers with a bill higher than a specified amount:</label>
+            <input id="search_amount" type="number" name="search_amount" value="">
+            <input type="button" value="Search" onclick="searchCustomersByBill()">
+          </form>
+        </article>
 
 
         <article class="container" id="container">
-            <h2>Customers</h2>
-            <input type="text" placeholder="Filter by Customer ID">
-            <button type="button" id="search-button">Search</button>
-            <input type="text" placeholder="Filter by first name">
-            <button type="button" id="search-button">Search</button>
-            <input type="text" placeholder="Filter by last name">
-            <button type="button" id="search-button">Search</button><br>
+        <h2>Customers</h2>
 
         <table style="width:100%" id="display-table">
             <thead>

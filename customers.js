@@ -32,13 +32,15 @@ module.exports = function () {
     // Funciton to get all customers with a bill larger than a specified number
     function getCustomersByBill(req, res, mysql, context, complete) {
       var query = "SELECT customerID, firstName, lastName, phone, address1, address2, city, state, zip, currentBill FROM customers WHERE currentBill > ?"
-      var inserts = [req.params.currentBill]
+      var inserts = [req.params.search_amount]
+      console.log("bill from getCustomersByBill: " + req.params.search_amount)
+
       mysql.pool.query(query, inserts, function(error, results, fields) {
         if(error){
           res.write(JSON.stringify(error));
           res.end();
         }
-        context.customer = results;
+        context.customers = results;
         complete();
       });
     }
@@ -61,6 +63,23 @@ module.exports = function () {
             }
         }
     });
+
+    // Displays all customers with a bill greater than specified amount
+    router.get('/search/:search_amount', function(req, res) {
+      console.log("in the search_amount get")
+      var callbackCount = 0;
+      var context = {};
+      context.jsscripts = ["delete.js", "search.js", "update.js"];
+      var mysql = req.app.get('mysql');
+      getCustomersByBill(req, res, mysql, context, complete);
+      function complete() {
+        callbackCount++;
+        if(callbackCount >= 1){
+          res.render('customers',context);
+        }
+      }
+    });
+
 
     // Add customers
     router.post('/', function (req, res) {
