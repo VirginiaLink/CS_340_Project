@@ -49,7 +49,7 @@ module.exports = function () {
 
     // Add payments
     router.post('/', function (req, res) {
-        console.log("adding a payment")
+        console.log("adding a payment date: " + req.body.paymentDate)
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO payments (customerID, paymentNum, paymentDate, amount) VALUES (?,?,?,?)";
         var inserts = [req.body.customerID, req.body.paymentNum, req.body.paymentDate, req.body.amount];
