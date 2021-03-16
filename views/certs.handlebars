@@ -33,26 +33,25 @@
             <h2>Add Certification</h2>
             <p>(employee id and service type must match existing customers/services.  We plan to upgrade this to a drop down list later)</p>
             <form id = "addcert" action = "/certs" method="post">
-              Employee Last Name: <select name="employeeID">
+              Employee ID:<input type="number" name="serviceID"><br>
+              <!-- Employee Last Name: <select name="employeeID">
                 {{#each employees}}
                 <option value="{{employeeID}}">{{lastName}}</option>
                 {{/each}}
-              </select><br>
-              Service Type: <select name="serviceID">
+              </select><br> -->
+              Service ID: <input type="number" name="checkedOutID"><br>
+              <!-- Service Type: <select name="serviceID">
                 {{#each service}}
                 <option value="{{serviceID}}">{{serviceType}}</option>
                 {{/each}}
-              </select><br>
+              </select><br> -->
               <input type="submit" value="Submit">
             </form>
         </article>
 
         <article class="container" id="container">
             <h2>Certifications</h2>
-            <input type="text" placeholder="Filter by Certification ID">
-            <button type="button" id="search-button">Search</button>
-            <input type="text" placeholder="Filter by Employee ID">
-            <button type="button" id="search-button">Search</button>
+
 
             <table style="width:100%" id="display-table">
               <thead>

@@ -14,30 +14,6 @@ module.exports = function(){
       });
     }
 
-    // Function to get Employees
-    function getCurrentEmployees(res, mysql, context, complete) {
-      mysql.pool.query("SELECT employeeID, lastName FROM employees", function(error, results, fields) {
-        if(error){
-          res.write(JSON.stringify(error));
-          res.end();
-        }
-        context.employees = results;
-        complete();
-      });
-    }
-    // Function to get services
-    function getCurrentServices(res, mysql, context, complete) {
-      mysql.pool.query("SELECT serviceID, serviceType FROM service", function(error, results, fields) {
-        if(error){
-          res.write(JSON.stringify(error));
-          res.end();
-        }
-        console.log("asdfasdfasdfasdfasdffsdfd")
-        context.services = results;
-        complete();
-      });
-    }
-
 
     // -------------------------------------------------
 
@@ -48,11 +24,9 @@ module.exports = function(){
           var context = {};
           var mysql = req.app.get('mysql');
           getCerts(res, mysql, context, complete);
-          getCurrentEmployees(res, mysql, context, complete);
-          getCurrentServices(res, mysql, context, complete);
           function complete() {
             callbackCount++;
-            if (callbackCount >= 3) {
+            if (callbackCount >= 1) {
               res.render('certs', context);
             }
           }
