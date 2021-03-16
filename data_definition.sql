@@ -60,10 +60,11 @@ UNLOCK TABLE;
 -- Table structure for 'services'
 DROP TABLE IF EXISTS `services`;
 CREATE TABLE `services` (
+  'serviceID' int(10) NOT NULL AUTO_INCREMENT,
   `serviceType` varchar(255) NOT NULL,
   `gearNeeded` varchar(255) DEFAULT NULL,
   `cost` int(10),
-  PRIMARY KEY (`serviceType`)
+  PRIMARY KEY (`serviceID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumping data for table 'services'
@@ -142,20 +143,20 @@ UNLOCK TABLE;
 DROP TABLE IF EXISTS `certs`;
 CREATE TABLE `certs` (
   `certifiedEmployees` int(11),
-  `serviceType` varchar(255),
+  `serviceID` varchar(255),
   FOREIGN KEY (`certifiedEmployees`) REFERENCES `employees` (`employeeID`),
-  FOREIGN KEY (`serviceType`) REFERENCES `services` (`serviceType`)
+  FOREIGN KEY (`serviceID`) REFERENCES `services` (`serviceID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumping data for table 'certs'
 LOCK TABLES `certs` WRITE;
 
-INSERT INTO `certs` (certifiedEmployees, serviceType)
+INSERT INTO `certs` (certifiedEmployees, serviceID)
 VALUES (1, 'Outdoor Chemical Treatment'),
-(2, 'Indoor Mouse Traps'),
-(1, 'Inspection'),
-(2, 'Inspection'),
-(3, 'Inspection');
+(2, 2,
+(1, 1),
+(2, 1),
+(3, 1);
 
 
 UNLOCK TABLE;
