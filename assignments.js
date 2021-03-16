@@ -4,7 +4,7 @@ module.exports = function () {
 
     // get all assignments
     function getAssignments(res, mysql, context, complete) {
-        mysql.pool.query("SELECT employees.lastName AS employeeID, customers.lastName AS customerID FROM assignments INNER JOIN customers ON assignments.customerID = customers.customerID INNER JOIN employees ON assignments.employeeID = employees.employeeID", function (error, results, fields) {
+        mysql.pool.query("SELECT employeeID, customerID FROM assignments", function (error, results, fields) {
             if (error) {
                 res.write(JSON.stringify(error));
                 res.end();
@@ -50,12 +50,11 @@ module.exports = function () {
     });
 
     // delete from Assignments
-    router.delete('/employeeID/:employeeID/assignments/:customerID', function (req, res) {
+    router.delete('/employeeID/:employeeID/customerID/:customerID', function (req, res) {
         console.log(req.params.employeeID)
         console.log(req.params.customerID)
         var mysql = req.app.get('mysql');
         var sql = "DELETE FROM assignments WHERE employeeID = ? AND customerID = ?";
-        var sql = "DELETE FROM assignments WHERE pid = ? AND cid = ?";
         var inserts = [req.params.employeeID, req.params.customerID];
         sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
             if (error) {

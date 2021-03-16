@@ -30,10 +30,10 @@
 
         <article class="container" id="container">
             <h2>New Assignment</h2>
-            <p>(employee id and customer id must match existing customers/employees.  We plan to upgrade this to a drop down list later)</p>
+            <p>(employee id and customer id must match existing customers/employees)</p>
             <form id="addassignment" action="/assignments" method="post">
-                Employee ID: <input type="text" name="employeeID"><br>
-                Customer ID: <input type="text" name="customerID"><br>
+                Employee ID: <input type="number" name="employeeID"><br>
+                Customer ID: <input type="number" name="customerID"><br>
                 <input type="submit" value="Submit">
             </form>
         </article>
@@ -43,8 +43,8 @@
 
             <table style="width:100%" id="display-table">
               <thead>
-                <th>Employee Last Name</th>
-                <th>Customer Last Name</th>
+                <th>Employee ID</th>
+                <th>Customer ID</th>
               </thead>
               <tbody>
                 {{#each assignments}}

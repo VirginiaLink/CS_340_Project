@@ -31,7 +31,7 @@
 
         <article class="container" id="container">
             <h2>Add Certification</h2>
-            <p>(employee id and service type must match existing customers/services.  We plan to upgrade this to a drop down list later)</p>
+            <p>(employee id and service type must match existing customers/services)</p>
             <form id = "addcert" action = "/certs" method="post">
               Employee ID:<input type="number" name="certifiedEmployees"><br>
               Service ID: <input type="number" name="serviceID"><br>
@@ -53,7 +53,6 @@
                 <tr>
                   <td>{{certifiedEmployees}}</td>
                   <td>{{serviceID}}</td>
-                  <td><button onclick="deleteCert({{serviceID}})">Delete</td>
                 </tr>
                 {{/each}}
               </tbody>

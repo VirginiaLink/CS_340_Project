@@ -45,7 +45,7 @@ function deleteCert(certifiedEmployees, serviceID){
 
 function deleteAssignment(employeeID, customerID) {
     $.ajax({
-        url: '/assignments/employeeID/' + employeeID + '/customers/' + customerID,
+        url: '/assignments/employeeID/' + employeeID + '/customerID/' + customerID,
         type: 'DELETE',
         success: function (result) {
             if (result.responseText != undefined) {
