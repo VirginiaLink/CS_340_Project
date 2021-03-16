@@ -34,7 +34,7 @@
             <p>(employee id and service type must match existing customers/services.  We plan to upgrade this to a drop down list later)</p>
             <form id = "addcert" action = "/certs" method="post">
               Employee ID: <input type="number" name="certifiedEmployees"><br>
-              Service Type: <input type="text" name="serviceType"><br>
+              Service ID: <input type="text" name="serviceID"><br>
               <input type="submit" value="Submit">
             </form>
         </article>
@@ -48,15 +48,15 @@
 
             <table style="width:100%" id="display-table">
               <thead>
-                <th>Employee ID</th>
+                <th>Employee Last Name</th>
                 <th>Service Type</th>
               </thead>
               <tbody>
                 {{#each certs}}
                 <tr>
                   <td>{{certifiedEmployees}}</td>
-                  <td>{{serviceType}}</td>
-                  <td><button onclick="deleteCert({{serviceType}})">Delete</td>
+                  <td>{{serviceID}}</td>
+                  <td><button onclick="deleteCert({{serviceID}})">Delete</td>
                 </tr>
                 {{/each}}
               </tbody>

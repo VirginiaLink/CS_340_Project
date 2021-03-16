@@ -4,7 +4,7 @@ module.exports = function(){
 
     // Function to get all certs
     function getCerts(res, mysql, context, complete) {
-      mysql.pool.query("SELECT certifiedEmployees, serviceID FROM certs", function(error, results, fields) {
+      mysql.pool.query("SELECT employees.lastName AS certifiedEmployees, service.serviceType AS serviceID FROM certs INNER JOIN employees ON certs.certifiedEmployees = employees.employeeID INNER JOIN service ON certs.serviceID = service.serviceID", function(error, results, fields) {
         if(error) {
           res.write(JSON.stringify(error));
           res.end();
