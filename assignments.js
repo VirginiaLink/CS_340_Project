@@ -32,7 +32,7 @@ module.exports = function () {
         }
     });
 
-    // Add services
+    // Add assignments
     router.post('/', function (req, res) {
         console.log("adding a assignments")
         var mysql = req.app.get('mysql');
@@ -48,6 +48,26 @@ module.exports = function () {
             }
         });
     });
+
+    // delete from Assignments
+    router.delete('/employeeID/:employeeID/assignments/:customerID', function (req, res) {
+        console.log(req.params.employeeID)
+        console.log(req.params.customerID)
+        var mysql = req.app.get('mysql');
+        var sql = "DELETE FROM assignments WHERE employeeID = ? AND customerID = ?";
+        var sql = "DELETE FROM assignments WHERE pid = ? AND cid = ?";
+        var inserts = [req.params.employeeID, req.params.customerID];
+        sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
+            if (error) {
+                res.write(JSON.stringify(error));
+                res.status(400);
+                res.end();
+            } else {
+                res.status(202).end();
+            }
+        })
+    })
+
 
     return router;
 }();

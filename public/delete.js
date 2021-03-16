@@ -43,6 +43,21 @@ function deleteCert(certifiedEmployees, serviceID){
   })
 };
 
+function deleteAssignment(employeeID, customerID) {
+    $.ajax({
+        url: '/assignments/employeeID/' + employeeID + '/customers/' + customerID,
+        type: 'DELETE',
+        success: function (result) {
+            if (result.responseText != undefined) {
+                alert(result.responseText)
+            }
+            else {
+                window.location.reload(true)
+            }
+        }
+    })
+};
+
 function deleteGear(gearID) {
     $.ajax({
         url: '/gear/' + gearID,
