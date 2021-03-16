@@ -4,7 +4,7 @@ module.exports = function(){
 
     // Function to get all certs
     function getCerts(res, mysql, context, complete) {
-      mysql.pool.query("SELECT certifiedEmployees, serviceType FROM certs", function(error, results, fields) {
+      mysql.pool.query("SELECT certifiedEmployees, serviceID FROM certs", function(error, results, fields) {
         if(error) {
           res.write(JSON.stringify(error));
           res.end();
@@ -36,8 +36,8 @@ module.exports = function(){
         router.post('/', function(req, res){
           console.log("adding a cert")
           var mysql = req.app.get('mysql');
-          var sql = "INSERT INTO certs (certifiedEmployees, serviceType) VALUES (?,?)";
-          var inserts = [req.body.certifiedEmployees, req.body.serviceType];
+          var sql = "INSERT INTO certs (certifiedEmployees, serviceID) VALUES (?,?)";
+          var inserts = [req.body.certifiedEmployees, req.body.serviceID];
           sql = mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error) {
               console.log(JSON.stringify(error))

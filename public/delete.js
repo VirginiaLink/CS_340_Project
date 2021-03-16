@@ -28,9 +28,9 @@ function deletePayment(paymentNum) {
     })
 };
 
-function deleteCert(certifiedEmployees, serviceType){
+function deleteCert(certifiedEmployees, serviceID){
   $.ajax({
-    url: '/certs/employeeID/' + certifiedEmployees + '/cert/' + serviceType,
+    url: '/certs/employeeID/' + certifiedEmployees + '/cert/' + serviceID,
     type: 'DELETE',
     success: function(result){
         if(result.responseText != undefined){
