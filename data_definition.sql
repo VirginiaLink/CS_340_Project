@@ -60,12 +60,14 @@ UNLOCK TABLE;
 -- Table structure for 'services'
 DROP TABLE IF EXISTS `services`;
 CREATE TABLE `services` (
-  'serviceID' int(10) NOT NULL AUTO_INCREMENT,
+  `serviceID` int(11) NOT NULL AUTO_INCREMENT,
   `serviceType` varchar(255) NOT NULL,
   `gearNeeded` varchar(255) DEFAULT NULL,
   `cost` int(10),
   PRIMARY KEY (`serviceID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- this is wrong 
 
 -- Dumping data for table 'services'
 LOCK TABLES `services` WRITE;
@@ -152,8 +154,8 @@ CREATE TABLE `certs` (
 LOCK TABLES `certs` WRITE;
 
 INSERT INTO `certs` (certifiedEmployees, serviceID)
-VALUES (1, 'Outdoor Chemical Treatment'),
-(2, 2,
+VALUES (1, 2),
+(2, 2),
 (1, 1),
 (2, 1),
 (3, 1);
