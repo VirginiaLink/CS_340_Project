@@ -58,7 +58,7 @@ module.exports = function () {
     router.delete('/:serviceType', function (req, res) {
       var mysql = req.app.get('mysql');
       var sql = "DELETE FROM services WHERE serviceType = ?";
-      var inserts = [req.params.id];
+      var inserts = [req.params.serviceType];
       console.log("IN service DELETE: ")
       sql = mysql.pool.query(sql, inserts, function(error, results, fields){
         if(error){
