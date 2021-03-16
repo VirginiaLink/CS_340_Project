@@ -44,6 +44,7 @@ module.exports = function(){
               res.write(JSON.stringify(error));
               res.end();
             } else {
+              console.log("sql used " + sql.sql)
               res.redirect('/certs');
             }
           });
