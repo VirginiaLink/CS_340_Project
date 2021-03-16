@@ -52,8 +52,10 @@ module.exports = function () {
         });
     });
 
+
+
     // delete from services
-    router.delete('/:id', function (req, res) {
+    router.delete('/:serviceType', function (req, res) {
       var mysql = req.app.get('mysql');
       var sql = "DELETE FROM services WHERE serviceType = ?";
       var inserts = [req.params.id];
