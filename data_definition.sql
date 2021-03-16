@@ -57,9 +57,9 @@ VALUES ('Jack', 'Workman', '777-777-7777', NULL, 43),
 
 UNLOCK TABLE;
 
--- Table structure for 'services'
-DROP TABLE IF EXISTS `services`;
-CREATE TABLE `services` (
+-- Table structure for 'service'
+DROP TABLE IF EXISTS `service`;
+CREATE TABLE `service` (
   `serviceID` int(11) NOT NULL AUTO_INCREMENT,
   `serviceType` varchar(255) NOT NULL,
   `gearNeeded` varchar(255) DEFAULT NULL,
@@ -67,12 +67,11 @@ CREATE TABLE `services` (
   PRIMARY KEY (`serviceID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- this is wrong 
 
--- Dumping data for table 'services'
-LOCK TABLES `services` WRITE;
+-- Dumping data for table 'service'
+LOCK TABLES `service` WRITE;
 
-INSERT INTO `services` (serviceType, gearNeeded, cost)
+INSERT INTO `service` (serviceType, gearNeeded, cost)
 VALUES ('Inspection', NULL, 50),
 ('Outdoor Chemical Treatment', 'Sprayer', 150),
 ('Indoor Mouse Traps', 'Mouse Traps', 100);
@@ -145,9 +144,9 @@ UNLOCK TABLE;
 DROP TABLE IF EXISTS `certs`;
 CREATE TABLE `certs` (
   `certifiedEmployees` int(11),
-  `serviceID` varchar(255),
+  `serviceID` int(11),
   FOREIGN KEY (`certifiedEmployees`) REFERENCES `employees` (`employeeID`),
-  FOREIGN KEY (`serviceID`) REFERENCES `services` (`serviceID`)
+  FOREIGN KEY (`serviceID`) REFERENCES `service` (`serviceID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumping data for table 'certs'

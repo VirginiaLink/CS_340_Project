@@ -6,7 +6,7 @@ module.exports = function () {
 
     // get all services
     function getServices(res, mysql, context, complete) {
-        mysql.pool.query("SELECT serviceID, serviceType, gearNeeded, cost FROM services", function (error, results, fields) {
+        mysql.pool.query("SELECT serviceType, gearNeeded, cost FROM service", function (error, results, fields) {
             if (error) {
                 res.write(JSON.stringify(error));
                 res.end();
@@ -39,7 +39,7 @@ module.exports = function () {
     router.post('/', function (req, res) {
         console.log("adding a service")
         var mysql = req.app.get('mysql');
-        var sql = "INSERT INTO services (serviceType, gearNeeded, cost) VALUES (?,?,?)";
+        var sql = "INSERT INTO service (serviceType, gearNeeded, cost) VALUES (?,?,?)";
         var inserts = [req.body.serviceType, req.body.gearNeeded, req.body.cost];
         sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
             if (error) {
@@ -55,10 +55,10 @@ module.exports = function () {
 
 
     // delete from services
-    router.delete('/:serviceID', function (req, res) {
+    router.delete('/:serviceType', function (req, res) {
       var mysql = req.app.get('mysql');
-      var sql = "DELETE FROM services WHERE serviceID = ?";
-      var inserts = [req.params.serviceID];
+      var sql = "DELETE FROM service WHERE serviceType = ?";
+      var inserts = [req.params.serviceType];
       console.log("IN service DELETE: ")
       sql = mysql.pool.query(sql, inserts, function(error, results, fields){
         if(error){
