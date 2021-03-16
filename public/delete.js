@@ -53,9 +53,9 @@ function deleteGear(gearID) {
     })
 };
 
-function deleteService(serviceType) {
+function deleteService(serviceID) {
     $.ajax({
-        url: '/services/' + serviceType,
+        url: '/services/' + serviceID,
         type: 'DELETE',
         success: function (result) {
             window.location.reload(true);

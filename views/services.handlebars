@@ -51,10 +51,15 @@
                 <tbody>
                   {{#each services}}
                   <tr>
+                    <td>{{serviceID}}</td>
                     <td>{{serviceType}}</td>
                     <td>{{gearNeeded}}</td>
                     <td>{{cost}}</td>
+<<<<<<< HEAD
                     <td><button onclick="deleteService("{{serviceType}}")">Delete</td>
+=======
+                    <td><button onclick="deleteService({{serviceID}})">Delete</td>
+>>>>>>> 011614ef531a4faf9b617b9da1d107ccec585ca6
                   </tr>
                   {{/each}}
                 </tbody>
